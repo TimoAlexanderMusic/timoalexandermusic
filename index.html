@@ -846,37 +846,32 @@
     Production Music <span>·</span> Sync Licensing <span>·</span> Advertising & Media
   </p>
 
-  <div class="hero-cred">
+  <div class="hero-cred" style="display:none;">
     <span class="hero-cred-icon">📺</span>
     <p class="hero-cred-text">
       Sync placement at the <strong>EHF Handball European Championship · ZDF</strong>
     </p>
   </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
 </section>
-
-<!-- PUBLISHERS -->
-<div class="publishers">
-  <p class="publishers-label">Music available on</p>
-  <div class="publishers-list">
-    <a href="https://ripcue.com" target="_blank" class="publisher-item">RipCue Music</a>
-    <span class="publisher-dot">·</span>
-    <a href="https://stardust.audio" target="_blank" class="publisher-item">Stardust Audio</a>
-    <span class="publisher-dot">·</span>
-    <a href="https://www.rareformaudio.com" target="_blank" class="publisher-item">Rareform Production Music</a>
-    <span class="publisher-dot">·</span>
-    <span class="publisher-item publisher-coming">10West Music <span class="coming-tag">soon</span></span>
-  </div>
-</div>
 
 <!-- TRACKS -->
 <section class="tracks" id="music">
   <p class="section-label">Listen</p>
   <h2 class="section-title">Selected works.</h2>
+
+  <!-- PUBLISHERS INSIDE MUSIC SECTION -->
+  <div class="publishers" style="margin: 0 0 48px 0; border: none; padding: 0; background: transparent;">
+    <p class="publishers-label">Music available on</p>
+    <div class="publishers-list">
+      <a href="https://ripcue.com" target="_blank" class="publisher-item">RipCue Music</a>
+      <span class="publisher-dot">·</span>
+      <a href="https://stardust.audio" target="_blank" class="publisher-item">Stardust Audio</a>
+      <span class="publisher-dot">·</span>
+      <a href="https://www.rareformaudio.com" target="_blank" class="publisher-item">Rareform Production Music</a>
+      <span class="publisher-dot">·</span>
+      <span class="publisher-item publisher-coming">10West Music <span class="coming-tag">soon</span></span>
+    </div>
+  </div>
 
   <!-- ZDF FEATURED TRACK -->
   <div class="featured-track">
@@ -1115,4 +1110,19 @@
       const h2 = 40 + Math.random() * 120;
       const dur = 1.5 + Math.random() * 2.5;
       const delay = Math.random() * 3;
-      bar.style.cssText = `--h1:${h1}px; --h2:${h2}px
+      bar.style.cssText = `--h1:${h1}px; --h2:${h2}px; --dur:${dur}s; --delay:${delay}s; height:${h1}px;`;
+      waveform.appendChild(bar);
+    }
+
+    document.querySelectorAll('.track-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        item.querySelector('.track-num').style.color = 'var(--orange)';
+      });
+      item.addEventListener('mouseleave', () => {
+        item.querySelector('.track-num').style.color = 'rgba(255,106,0,0.25)';
+      });
+    });
+  });
+</script>
+</body>
+</html>
