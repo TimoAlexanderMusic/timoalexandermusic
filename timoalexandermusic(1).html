@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Timo Alexander Music – Production Music · Sync Licensing · Advertising & Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #161616;
+    --orange: #FF6A00;
+    --orange-dim: #C45000;
+    --cream: #F0EBE0;
+    --muted: #666;
+    --border: rgba(255,106,0,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--orange); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* Animated waveform lines in background */
+  .waveform-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding: 0 48px;
+    opacity: 0.06;
+  }
+
+  .waveform-bg span {
+    flex: 1;
+    background: var(--orange);
+    border-radius: 2px 2px 0 0;
+    animation: wavePulse var(--dur, 2s) ease-in-out infinite alternate;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes wavePulse {
+    from { height: var(--h1, 20px); }
+    to   { height: var(--h2, 80px); }
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    color: var(--cream);
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--orange);
+  }
+
+  .hero-subtitle {
+    margin-top: 32px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-subtitle span {
+    color: rgba(255,106,0,0.5);
+    margin: 0 12px;
+  }
+
+  .hero-cred {
+    margin-top: 56px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,106,0,0.07);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--orange);
+    padding: 14px 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .hero-cred-icon {
+    font-size: 20px;
+  }
+
+  .hero-cred-text {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--cream);
+    opacity: 0.8;
+  }
+
+  .hero-cred-text strong {
+    color: var(--orange);
+    font-weight: 500;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--orange);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 100px 48px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--orange);
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 48px;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 48px;
+  }
+
+  .service-card {
+    background: var(--bg2);
+    padding: 36px 32px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .service-card:hover { background: var(--bg3); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(255,106,0,0.12);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .service-name {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── TRACKS ── */
+  .tracks { background: var(--bg); }
+
+  .track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .track-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto auto;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .track-item:last-child { border-bottom: none; }
+  .track-item:hover { background: rgba(255,106,0,0.04); }
+
+  .track-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(255,106,0,0.25);
+    text-align: center;
+  }
+
+  .track-item:hover .track-num { color: var(--orange); }
+
+  .track-info {}
+
+  .track-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 3px;
+  }
+
+  .track-genre {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .track-tag {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .track-duration {
+    font-size: 12px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* Reelcrafter embed placeholder */
+  .reel-embed {
+    margin-top: 48px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 32px;
+    text-align: center;
+  }
+
+  .reel-embed-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .reel-embed iframe {
+    width: 100%;
+    border: none;
+    background: transparent;
+  }
+
+  .reel-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px dashed rgba(255,106,0,0.2);
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .reel-placeholder svg {
+    opacity: 0.3;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-left {}
+
+  .about-stat {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-stat:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(240,235,224,0.75);
+    margin-bottom: 20px;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-text strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 300;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 4px;
+    transition: color 0.3s;
+    margin: 32px 0;
+  }
+
+  .contact-email:hover { color: var(--orange); }
+
+  .contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 40px;
+    list-style: none;
+  }
+
+  .contact-socials a {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-socials a:hover { color: var(--orange); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── FEATURED TRACK ── */
+  .featured-track {
+    border: 1px solid var(--orange);
+    background: rgba(255,106,0,0.04);
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+
+  .featured-track-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: rgba(255,106,0,0.08);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .featured-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 500;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulseDot 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .featured-broadcaster {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+
+  .featured-track-body {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .featured-info { flex: 1; min-width: 200px; }
+
+  .featured-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .featured-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 500px;
+  }
+
+  .featured-player {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 280px;
+  }
+
+  .play-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--orange);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .play-btn:hover { background: #ff8533; transform: scale(1.05); }
+  .play-btn:active { transform: scale(0.95); }
+
+  .player-progress {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    position: relative;
+    border-radius: 2px;
+  }
+
+  .player-progress-fill {
+    height: 100%;
+    background: var(--orange);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  .player-time {
+    font-size: 12px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 36px;
+  }
+
+  /* ── ABOUT PHOTO ── */
+  .about-photo-wrap {
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .about-photo {
+    width: 100%;
+    max-width: 280px;
+    display: block;
+    filter: grayscale(20%) contrast(1.05);
+    border: 1px solid var(--border);
+  }
+
+  .about-photo-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--orange), transparent);
+    opacity: 0.2;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 72px; }
+    .hero-scroll { left: 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    .track-item { grid-template-columns: 36px 1fr auto; }
+    .track-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Timo <span>Alexander</span> Music</a>
+  <ul class="nav-links">
+    <li><a href="#music">Music</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="waveform-bg" aria-hidden="true" id="waveform"></div>
+
+  <p class="hero-eyebrow">Composer · Mosbach, Germany</p>
+  <h1 class="hero-title">
+    Music that moves<br><em>brands forward.</em>
+  </h1>
+  <p class="hero-subtitle">
+    Production Music <span>·</span> Sync Licensing <span>·</span> Advertising & Media
+  </p>
+
+  <div class="hero-cred">
+    <span class="hero-cred-icon">📺</span>
+    <p class="hero-cred-text">
+      Sync placement at the <strong>EHF Handball European Championship · ZDF</strong>
+    </p>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label">What I offer</p>
+  <h2 class="section-title">Music for every<br>creative brief.</h2>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <p class="service-name">Advertising & Campaigns</p>
+      <p class="service-desc">Tailor-made music for commercials, brand videos and social media campaigns. GEMA-free, licensed and delivered fast.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <p class="service-name">Sport & Action</p>
+      <p class="service-desc">High-energy tracks for sports brands, event highlights and broadcast content. Proven at international broadcast level.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <p class="service-name">Cinematic & Documentary</p>
+      <p class="service-desc">Orchestral and hybrid scores for image films, documentaries and storytelling content.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-number">04</div>
+      <p class="service-name">Corporate & Brand Identity</p>
+      <p class="service-desc">Audio branding, intro themes and background music that give your brand a consistent sonic identity.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRACKS -->
+<section class="tracks" id="music">
+  <p class="section-label">Listen</p>
+  <h2 class="section-title">Selected works.</h2>
+
+  <!-- ZDF FEATURED TRACK -->
+  <div class="featured-track">
+    <div class="featured-track-header">
+      <div class="featured-badge">
+        <span class="badge-dot"></span>
+        Featured Placement
+      </div>
+      <div class="featured-meta">
+        <span class="featured-broadcaster">📺 ZDF · EHF Handball European Championship</span>
+      </div>
+    </div>
+    <div class="featured-track-body">
+      <div class="featured-info">
+        <p class="featured-title">Sport & Action — EHF Placement</p>
+        <p class="featured-desc">This track was used as background music during the EHF Handball European Championship broadcast on ZDF — Germany's national public television.</p>
+      </div>
+      <div class="featured-player">
+        <audio id="zdfAudio" src="zdf_track.mpeg" preload="metadata"></audio>
+        <button class="play-btn" id="playBtn" onclick="togglePlay()">
+          <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg id="pauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <div class="player-progress" id="progressBar" onclick="seekAudio(event)">
+          <div class="player-progress-fill" id="progressFill"></div>
+        </div>
+        <span class="player-time" id="playerTime">0:00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- REELCRAFTER EMBED — ersetze die iframe src mit deinem Reelcrafter-Link -->
+  <div class="reel-embed">
+    <p class="reel-embed-label">Demo Reel · Timo Alexander Music</p>
+    <!-- ↓↓↓ HIER deinen Reelcrafter Embed-Code einfügen ↓↓↓ -->
+    <div class="reel-placeholder">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="12" cy="12" r="10"/>
+        <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>Reelcrafter Embed · Embed-Code hier einfügen</span>
+      <span style="font-size:10px; opacity:0.5">In Reelcrafter: Share → Embed Code → kopieren & hier einfügen</span>
+    </div>
+    <!-- ↑↑↑ ENDE Reelcrafter Embed ↑↑↑ -->
+  </div>
+
+  <!-- Track list -->
+  <div class="track-list" style="margin-top: 48px;">
+    <div class="track-item">
+      <span class="track-num">01</span>
+      <div class="track-info">
+        <p class="track-name">Sport & Action</p>
+        <p class="track-genre">High Energy · Percussion · Hybrid</p>
+      </div>
+      <span class="track-tag">Broadcast</span>
+      <span class="track-duration">2:34</span>
+    </div>
+    <div class="track-item">
+      <span class="track-num">02</span>
+      <div class="track-info">
+        <p class="track-name">Brand Theme</p>
+        <p class="track-genre">Orchestral · Cinematic · Uplifting</p>
+      </div>
+      <span class="track-tag">Corporate</span>
+      <span class="track-duration">1:58</span>
+    </div>
+    <div class="track-item">
+      <span class="track-num">03</span>
+      <div class="track-info">
+        <p class="track-name">Cinematic Trailer</p>
+        <p class="track-genre">Epic · Orchestral · Tension</p>
+      </div>
+      <span class="track-tag">Media</span>
+      <span class="track-duration">2:10</span>
+    </div>
+    <div class="track-item">
+      <span class="track-num">04</span>
+      <div class="track-info">
+        <p class="track-name">High Energy Commercial</p>
+        <p class="track-genre">Electronic · Upbeat · Driving</p>
+      </div>
+      <span class="track-tag">Advertising</span>
+      <span class="track-duration">1:45</span>
+    </div>
+    <div class="track-item">
+      <span class="track-num">05</span>
+      <div class="track-info">
+        <p class="track-name">Emotional Background</p>
+        <p class="track-genre">Ambient · Atmospheric · Subtle</p>
+      </div>
+      <span class="track-tag">Film</span>
+      <span class="track-duration">3:12</span>
+    </div>
+    <div class="track-item">
+      <span class="track-num">06</span>
+      <div class="track-info">
+        <p class="track-name">Corporate Intro</p>
+        <p class="track-genre">Clean · Modern · Professional</p>
+      </div>
+      <span class="track-tag">Corporate</span>
+      <span class="track-duration">0:30</span>
+    </div>
+    <div class="track-item">
+      <span class="track-num">07</span>
+      <div class="track-info">
+        <p class="track-name">Storytelling / Documentary</p>
+        <p class="track-genre">Acoustic · Warm · Narrative</p>
+      </div>
+      <span class="track-tag">Documentary</span>
+      <span class="track-duration">2:48</span>
+    </div>
+    <div class="track-item">
+      <span class="track-num">08</span>
+      <div class="track-info">
+        <p class="track-name">Anthem / Brand Story</p>
+        <p class="track-genre">Cinematic · Inspirational · Full</p>
+      </div>
+      <span class="track-tag">Branding</span>
+      <span class="track-duration">3:05</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">The composer<br>behind the music.</h2>
+
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="about-photo-wrap">
+        <img src="timo_photo.jpg" alt="Timo Alexander" class="about-photo"/>
+        <div class="about-photo-label">Timo Alexander · Mosbach</div>
+      </div>
+      <div class="about-stat" style="margin-top: 32px;">
+        <p class="stat-number">15+</p>
+        <p class="stat-label">Years of musical experience</p>
+      </div>
+      <div class="about-stat">
+        <p class="stat-number">ZDF</p>
+        <p class="stat-label">International broadcast sync placement</p>
+      </div>
+      <div class="about-stat">
+        <p class="stat-number">∞</p>
+        <p class="stat-label">Genres · from cinematic to hip-hop</p>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <p>Hi, I'm <strong>Timo</strong> – a composer based in Mosbach, Germany, specializing in production music for advertising, media and sync licensing.</p>
+      <p>My love for music started at age 11 when I picked up the French horn and played in various school orchestras. At 16, I taught myself bass guitar and started diving into beat production and larger, more dynamic compositions.</p>
+      <p>Today I work from my home studio creating everything from <strong>cinematic orchestral tracks</strong> to high-energy sport and action music – always with a personal, creative touch.</p>
+      <p>My music has been placed in international broadcasts, including as background music during the <strong>EHF Handball European Championship on ZDF</strong>. I work with agencies, brands and media productions to create tailor-made music that fits their projects perfectly – licensed, flexible and always on time.</p>
+      <p>Feel free to reach out – I'd love to hear about your project.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <p class="section-label" style="justify-content: center;">Get in touch</p>
+    <h2 class="section-title" style="font-size: clamp(28px, 3.5vw, 48px);">Let's create something<br><em style="font-style:italic; color: var(--orange);">worth hearing.</em></h2>
+    <p style="font-size: 13px; color: var(--muted); letter-spacing: 1px; margin-top: -24px;">Available for agencies, brands & media productions.</p>
+
+    <a class="contact-email" href="/cdn-cgi/l/email-protection#82f6ebefedc2f6ebefede3eee7fae3ece6e7f0eff7f1ebe1ace6e7">
+      <span class="__cf_email__" data-cfemail="4b3f2226240b3f2226242a272e332a252f2e39263e382228652f2e">[email&#160;protected]</span>
+    </a>
+
+    <ul class="contact-socials">
+      <li><a href="https://www.instagram.com/timo_alexander_music/" target="_blank">Instagram</a></li>
+      <li><a href="#" target="_blank">LinkedIn</a></li>
+      <li><a href="https://x.com/TigerBeats4" target="_blank">X / Twitter</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Timo Alexander Music</p>
+  <p>© 2025 Timo Stegmeier · Im Brühl 2, 74821 Mosbach · <a href="#" style="color: var(--muted); text-decoration:none;">Impressum</a></p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Audio player
+  const audio = document.getElementById('zdfAudio');
+  const playBtn = document.getElementById('playBtn');
+  const playIcon = document.getElementById('playIcon');
+  const pauseIcon = document.getElementById('pauseIcon');
+  const progressFill = document.getElementById('progressFill');
+  const playerTime = document.getElementById('playerTime');
+
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+    } else {
+      audio.pause();
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+    }
+  }
+
+  function seekAudio(e) {
+    const bar = document.getElementById('progressBar');
+    const rect = bar.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = ratio * audio.duration;
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = pct + '%';
+      const m = Math.floor(audio.currentTime / 60);
+      const s = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+      playerTime.textContent = `${m}:${s}`;
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    progressFill.style.width = '0%';
+    playerTime.textContent = '0:00';
+  });
+
+  // Generate waveform background bars
+  const waveform = document.getElementById('waveform');
+  const count = Math.floor(window.innerWidth / 6);
+  for (let i = 0; i < count; i++) {
+    const bar = document.createElement('span');
+    const h1 = 10 + Math.random() * 30;
+    const h2 = 40 + Math.random() * 120;
+    const dur = 1.5 + Math.random() * 2.5;
+    const delay = Math.random() * 3;
+    bar.style.cssText = `--h1:${h1}px; --h2:${h2}px; --dur:${dur}s; --delay:${delay}s; height:${h1}px;`;
+    waveform.appendChild(bar);
+  }
+
+  // Track hover interaction
+  document.querySelectorAll('.track-item').forEach(item => {
+    item.addEventListener('mouseent
