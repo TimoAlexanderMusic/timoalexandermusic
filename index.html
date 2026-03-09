@@ -885,21 +885,19 @@
         <span class="featured-broadcaster">📺 ZDF · EHF Handball European Championship</span>
       </div>
     </div>
-    <div class="featured-track-body">
+    <div class="featured-track-body" style="flex-direction: column; gap: 24px;">
       <div class="featured-info">
         <p class="featured-title">Sport & Action — EHF Placement</p>
         <p class="featured-desc">This track was used as background music during the EHF Handball European Championship broadcast on ZDF — Germany's national public television.</p>
       </div>
-      <div class="featured-player">
-        <audio id="zdfAudio" src="zdf_track.mp3" preload="metadata"></audio>
-        <button class="play-btn" id="playBtn" onclick="togglePlay()">
-          <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <svg id="pauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-        </button>
-        <div class="player-progress" id="progressBar" onclick="seekAudio(event)">
-          <div class="player-progress-fill" id="progressFill"></div>
-        </div>
-        <span class="player-time" id="playerTime">0:00</span>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%;">
+        <iframe
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          src="https://www.youtube.com/embed/Ve2Y8SJcWnA"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
@@ -1002,8 +1000,9 @@
     <h2 class="section-title" style="font-size: clamp(28px, 3.5vw, 48px);">Let's create something<br><em style="font-style:italic; color: var(--orange);">worth hearing.</em></h2>
     <p style="font-size: 13px; color: var(--muted); letter-spacing: 1px; margin-top: -24px;">Available for agencies, brands & media productions.</p>
 
-    <a class="contact-email" href="/cdn-cgi/l/email-protection#b9cdd8cadad6d4c9d6cad0d7def9ded4d8d0d597dad6d4">
-      <span class="__cf_email__" data-cfemail="394d584a5a565449564a50575e795e54585055175a5654">[email&#160;protected]</span>
+ <a class="contact-email" href="mailto:tascomposing@gmail.com">
+  tascomposing@gmail.com
+</a>
     </a>
 
     <ul class="contact-socials">
