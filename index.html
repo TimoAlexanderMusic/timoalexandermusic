@@ -668,13 +668,13 @@
     color: var(--muted);
   }
 
-  .featured-track-body {
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
+.featured-track-body {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: start;
+}
 
   .featured-info { flex: 1; min-width: 200px; }
 
