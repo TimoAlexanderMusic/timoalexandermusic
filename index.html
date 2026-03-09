@@ -668,15 +668,18 @@
     color: var(--muted);
   }
 
-.featured-track-body {
-  padding: 24px;
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 40px;
-  align-items: start;
-}
+  .featured-track-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
 
-  .featured-info { flex: 1; min-width: 200px; }
+  .featured-info { 
+    flex: 0 0 220px; 
+    text-align: left;
+  }
 
   .featured-title {
     font-family: 'Cormorant Garamond', serif;
@@ -684,13 +687,14 @@
     font-weight: 300;
     color: var(--cream);
     margin-bottom: 6px;
+    text-align: left;
   }
 
   .featured-desc {
     font-size: 12px;
     color: var(--muted);
     line-height: 1.7;
-    max-width: 500px;
+    text-align: left;
   }
 
   .featured-player {
@@ -885,21 +889,20 @@
         <span class="featured-broadcaster">📺 ZDF · EHF Handball European Championship</span>
       </div>
     </div>
-    <div class="featured-track-body" style="flex-direction: row; gap: 40px; align-items: flex-start;">
-      <div class="featured-info" style="flex: 1; min-width: 200px;">
+    <div class="featured-track-body">
+      <div class="featured-info">
         <p class="featured-title">Sport & Action — EHF Placement</p>
         <p class="featured-desc">This track was used as background music during the EHF Handball European Championship broadcast on ZDF — Germany's national public television.</p>
       </div>
-      <div style="flex: 2; min-width: 0;">
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-          <iframe
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-            src="https://www.youtube.com/embed/Ve2Y8SJcWnA"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
+      <div style="min-width: 0;">
+        <iframe
+          width="100%"
+          height="240"
+          src="https://www.youtube.com/embed/Ve2Y8SJcWnA"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
@@ -1002,8 +1005,7 @@
     <h2 class="section-title" style="font-size: clamp(28px, 3.5vw, 48px);">Let's create something<br><em style="font-style:italic; color: var(--orange);">worth hearing.</em></h2>
     <p style="font-size: 13px; color: var(--muted); letter-spacing: 1px; margin-top: -24px;">Available for agencies, brands & media productions.</p>
 
-   <a class="contact-email" href="mailto:tascomposing@gmail.com">
-  tascomposing@gmail.com
+    <a class="contact-email" href="mailto:tascomposing@gmail.com">tascomposing@gmail.com</a>
 
     <ul class="contact-socials">
       <li><a href="https://www.instagram.com/timo_alexander_music/" target="_blank">Instagram</a></li>
@@ -1026,7 +1028,7 @@
     <p style="margin-bottom: 16px;">
       <strong style="color: var(--cream);">Kontakt</strong><br>
       Telefon: +49 (0) 15734905394<br>
-      E-Mail: <a href="/cdn-cgi/l/email-protection#e692879585898b9689958f8881a6818b878f8ac885898b" style="color: var(--orange); text-decoration:none;"><span class="__cf_email__" data-cfemail="c0b4a1b3a3afadb0afb3a9aea780a7ada1a9aceea3afad">[email&#160;protected]</span></a>
+      E-Mail: <a href="mailto:tascomposing@gmail.com" style="color: var(--orange); text-decoration:none;">tascomposing@gmail.com</a>
     </p>
     <p style="margin-bottom: 16px;">
       <strong style="color: var(--cream);">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</strong><br>
@@ -1045,7 +1047,7 @@
   <p>© 2025 Timo Stegmeier · Im Brühl 2, 74821 Mosbach · <a href="#impressum" style="color: var(--muted); text-decoration:none;">Impressum</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Audio player
   window.togglePlay = function() {
     const audio = document.getElementById('zdfAudio');
