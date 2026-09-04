@@ -23,6 +23,34 @@
   gtag('config', 'G-6TN4V1WVCN');
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Timo Stegmeier",
+  "alternateName": "Timo Alexander",
+  "jobTitle": "Komponist / Musikproduzent",
+  "url": "https://timoalexandermusic.de",
+  "email": "tascomposing@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mosbach",
+    "addressRegion": "Baden-Württemberg",
+    "addressCountry": "DE"
+  },
+  "knowsAbout": ["Produktionsmusik", "Sync Licensing", "Werbemusik", "Trailer Music", "Orchestral Hip Hop"],
+  "sameAs": [
+    "https://www.instagram.com/timo_alexander_music/",
+    "https://linkedin.com/in/timo-stegmeier-32a28032b/",
+    "https://x.com/TigerBeats4",
+    "https://music.ripcue.com/de/tracks?composers=timo-stegmeier-1283631352",
+    "https://10westmusic.sourceaudio.com/tracks?s=Timo%20Stegmeier"
+  ]
+}
+</script>
+
 <style>
   :root {
     --bg: #0a0a0a;
@@ -449,6 +477,200 @@
     opacity: 0.3;
   }
 
+  /* ── LIBRARIES ── */
+  .libs {
+    margin-top: 88px;
+  }
+
+  .libs-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+
+  .libs-count {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .libs-count strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--orange);
+    letter-spacing: 0;
+    margin-right: 2px;
+  }
+
+  .libs-count i {
+    font-style: normal;
+    color: var(--border);
+    margin: 0 6px;
+  }
+
+  .libs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .lib-card {
+    background: var(--bg2);
+    padding: 40px 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .lib-card:hover { background: var(--bg3); }
+
+  .lib-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: var(--orange);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s;
+  }
+
+  .lib-card:hover::before { transform: scaleY(1); }
+
+  /* Logo-Feld: fällt automatisch auf die Wortmarke zurück,
+     solange keine Logodatei unter /logos/ liegt. */
+  .lib-logo {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .lib-logo img {
+    max-height: 52px;
+    max-width: 200px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.6);
+    opacity: 0.75;
+    transition: filter 0.3s, opacity 0.3s;
+  }
+
+  .lib-card:hover .lib-logo img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+  }
+
+  .lib-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+
+  .lib-meta {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: -10px;
+  }
+
+  .lib-releases {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .lib-release {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .rel-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--orange);
+    margin-top: 7px;
+  }
+
+  .rel-dot.pending {
+    background: transparent;
+    border: 1px solid var(--orange);
+  }
+
+  .rel-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.25;
+  }
+
+  .rel-sub {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .lib-foot {
+    margin-top: auto;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .lib-status {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .lib-status.live {
+    color: var(--orange);
+    border-color: var(--orange);
+  }
+
+  .lib-link {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .lib-link:hover {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
+  }
+
   /* ── ABOUT ── */
   .about {
     background: var(--bg2);
@@ -576,69 +798,6 @@
     text-transform: uppercase;
   }
 
-  /* ── PUBLISHERS ── */
-  .publishers {
-    padding: 28px 48px;
-    background: var(--bg2);
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .publishers-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .publishers-list {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .publisher-item {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    color: rgba(240,235,224,0.5);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  a.publisher-item:hover { color: var(--orange); }
-
-  .publisher-dot {
-    color: var(--border);
-    font-size: 18px;
-  }
-
-  .publisher-coming {
-    opacity: 0.35;
-    cursor: default;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .coming-tag {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--orange);
-    border: 1px solid var(--orange);
-    padding: 2px 6px;
-    opacity: 0.7;
-  }
-
   /* ── FEATURED TRACK ── */
   .featured-track {
     border: 1px solid var(--orange);
@@ -724,55 +883,6 @@
     text-align: left;
   }
 
-  .featured-player {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    min-width: 280px;
-  }
-
-  .play-btn {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: var(--orange);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000;
-    flex-shrink: 0;
-    transition: background 0.2s, transform 0.1s;
-  }
-
-  .play-btn:hover { background: #ff8533; transform: scale(1.05); }
-  .play-btn:active { transform: scale(0.95); }
-
-  .player-progress {
-    flex: 1;
-    height: 3px;
-    background: rgba(255,255,255,0.1);
-    cursor: pointer;
-    position: relative;
-    border-radius: 2px;
-  }
-
-  .player-progress-fill {
-    height: 100%;
-    background: var(--orange);
-    border-radius: 2px;
-    width: 0%;
-    transition: width 0.1s linear;
-    pointer-events: none;
-  }
-
-  .player-time {
-    font-size: 12px;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-    min-width: 36px;
-  }
-
   /* ── ABOUT PHOTO ── */
   .about-photo-wrap {
     position: relative;
@@ -814,6 +924,13 @@
     footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
     .track-item { grid-template-columns: 36px 1fr auto; }
     .track-tag { display: none; }
+    .libs { margin-top: 64px; }
+    .libs-grid { grid-template-columns: 1fr; }
+    .lib-card { padding: 32px 26px 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
   }
 </style>
 </head>
@@ -892,20 +1009,6 @@
   <p class="section-label">Listen</p>
   <h2 class="section-title">Selected works.</h2>
 
-  <!-- PUBLISHERS INSIDE MUSIC SECTION -->
-  <div class="publishers" style="margin: 0 0 48px 0; border: none; padding: 0; background: transparent;">
-    <p class="publishers-label">Music available on</p>
-    <div class="publishers-list">
-      <a href="https://ripcue.com" target="_blank" class="publisher-item">RipCue Music</a>
-      <span class="publisher-dot">·</span>
-      <a href="https://stardust.audio" target="_blank" class="publisher-item">Stardust Audio</a>
-      <span class="publisher-dot">·</span>
-      <a href="https://www.rareformaudio.com" target="_blank" class="publisher-item">Rareform Production Music</a>
-      <span class="publisher-dot">·</span>
-      <span class="publisher-item publisher-coming">10West Music <span class="coming-tag">soon</span></span>
-    </div>
-  </div>
-
   <!-- ZDF FEATURED TRACK -->
   <div class="featured-track">
     <div class="featured-track-header">
@@ -919,7 +1022,7 @@
     </div>
     <div class="featured-track-body">
       <div class="featured-info">
-        <p class="featured-title">Sport & Action — EHF Placement</p>
+        <p class="featured-title">Sport &amp; Action — EHF Placement</p>
         <p class="featured-desc">This track was used as background music during the EHF Handball European Championship broadcast on ZDF — Germany's national public television.</p>
         <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px;">
           <div style="display: flex; align-items: center; gap: 10px;">
@@ -932,7 +1035,7 @@
           </div>
           <div style="display: flex; align-items: center; gap: 10px;">
             <span style="color: var(--orange); font-size: 18px;">🎵</span>
-            <span style="font-size: 12px; color: var(--muted);">Genre: <strong style="color: var(--cream);">Sport & Action</strong></span>
+            <span style="font-size: 12px; color: var(--muted);">Genre: <strong style="color: var(--cream);">Sport &amp; Action</strong></span>
           </div>
           <div style="display: flex; align-items: center; gap: 10px;">
             <span style="color: var(--orange); font-size: 18px;">📡</span>
@@ -945,6 +1048,7 @@
           width="480"
           height="270"
           src="https://www.youtube.com/embed/-LEptI8g6Qo"
+          title="Sport &amp; Action — EHF Placement"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
@@ -960,8 +1064,214 @@
       height="800"
       scrolling="no"
       frameborder="no"
+      title="Timo Alexander Music — Showreel"
       src="https://play.reelcrafter.com/embed/bd448330-88c8-46c4-ae36-84c517a109cc">
     </iframe>
+  </div>
+
+  <!-- ============================================================
+       LIBRARIES & KATALOGE
+       Logos: Ordner /logos/ anlegen, Dateien exakt so benennen wie
+       unten im src. Fehlt eine Datei, zeigt die Karte automatisch
+       den Namen als Schrift — es bricht nichts.
+       ============================================================ -->
+  <div class="libs">
+    <div class="libs-head">
+      <div>
+        <p class="section-label" data-en="Catalogue" data-de="Katalog">Catalogue</p>
+        <h3 class="section-title" style="margin-bottom:0; font-size: clamp(28px,3.2vw,42px);"
+            data-en="Where my music lives." data-de="Wo meine Musik liegt.">Where my music lives.</h3>
+      </div>
+      <p class="libs-count">
+        <span><strong>7</strong><span data-en="Libraries" data-de="Libraries">Libraries</span></span>
+        <i>·</i>
+        <span><strong>4</strong><span data-en="Albums" data-de="Alben">Albums</span></span>
+        <i>·</i>
+        <span><strong>1</strong><span data-en="TV Placement" data-de="TV-Placement">TV Placement</span></span>
+      </p>
+    </div>
+
+    <div class="libs-grid">
+
+      <!-- RIPCUE MUSIC -->
+      <article class="lib-card">
+        <div class="lib-logo">
+          <img src="logos/ripcue.png" alt="RipCue Music"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="lib-wordmark" style="display:none">RipCue Music</span>
+        </div>
+        <p class="lib-meta" data-en="Reality TV · Underscore" data-de="Reality-TV · Underscore">Reality TV · Underscore</p>
+        <ul class="lib-releases">
+          <li class="lib-release">
+            <span class="rel-dot"></span>
+            <div>
+              <p class="rel-name">Get The Trophy</p>
+              <p class="rel-sub" data-en="Album · Sport &amp; Action" data-de="Album · Sport &amp; Action">Album · Sport &amp; Action</p>
+            </div>
+          </li>
+          <li class="lib-release">
+            <span class="rel-dot pending"></span>
+            <div>
+              <p class="rel-name">Deceive Reality Moments</p>
+              <p class="rel-sub" data-en="Album · Tension underscore · in production" data-de="Album · Tension-Underscore · in Produktion">Album · Tension underscore · in production</p>
+            </div>
+          </li>
+        </ul>
+        <div class="lib-foot">
+          <span class="lib-status live">Live</span>
+          <a class="lib-link" target="_blank" rel="noopener"
+             href="https://music.ripcue.com/de/tracks?composers=timo-stegmeier-1283631352"
+             data-en="View tracks" data-de="Zum Katalog">View tracks</a>
+        </div>
+      </article>
+
+      <!-- MHC ENTERTAINMENT -->
+      <article class="lib-card">
+        <div class="lib-logo">
+          <img src="logos/mhc.png" alt="MHC Entertainment"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="lib-wordmark" style="display:none">MHC Entertainment</span>
+        </div>
+        <p class="lib-meta" data-en="Orchestral Hip Hop · Trailer" data-de="Orchestral Hip Hop · Trailer">Orchestral Hip Hop · Trailer</p>
+        <ul class="lib-releases">
+          <li class="lib-release">
+            <span class="rel-dot pending"></span>
+            <div>
+              <p class="rel-name">Unbroken</p>
+              <p class="rel-sub" data-en="Album · 12 tracks · in production" data-de="Album · 12 Tracks · in Produktion">Album · 12 tracks · in production</p>
+            </div>
+          </li>
+        </ul>
+        <div class="lib-foot">
+          <span class="lib-status" data-en="Coming soon" data-de="Coming soon">Coming soon</span>
+        </div>
+      </article>
+
+      <!-- 10 WEST MUSIC -->
+      <article class="lib-card">
+        <div class="lib-logo">
+          <img src="logos/10west.png" alt="10 West Music"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="lib-wordmark" style="display:none">10 West Music</span>
+        </div>
+        <p class="lib-meta" data-en="Sports · Broadcast · US" data-de="Sport · Broadcast · USA">Sports · Broadcast · US</p>
+        <ul class="lib-releases">
+          <li class="lib-release">
+            <span class="rel-dot"></span>
+            <div>
+              <p class="rel-name">Kitchen Frenzy</p>
+              <p class="rel-sub" data-en="Cooking show cue" data-de="Kochshow-Cue">Cooking show cue</p>
+            </div>
+          </li>
+          <li class="lib-release">
+            <span class="rel-dot pending"></span>
+            <div>
+              <p class="rel-name">Fighting Spirit</p>
+              <p class="rel-sub" data-en="Album · Dramatic sports" data-de="Album · Dramatic Sports">Album · Dramatic sports</p>
+            </div>
+          </li>
+        </ul>
+        <div class="lib-foot">
+          <span class="lib-status live">Live</span>
+          <a class="lib-link" target="_blank" rel="noopener"
+             href="https://10westmusic.sourceaudio.com/tracks?s=Timo%20Stegmeier"
+             data-en="View tracks" data-de="Zum Katalog">View tracks</a>
+        </div>
+      </article>
+
+      <!-- MUSIC SCULPTOR -->
+      <article class="lib-card">
+        <div class="lib-logo">
+          <img src="logos/music-sculptor.png" alt="Music Sculptor"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="lib-wordmark" style="display:none">Music Sculptor</span>
+        </div>
+        <p class="lib-meta" data-en="TV Journalism · DACH" data-de="TV-Journalismus · DACH">TV Journalism · DACH</p>
+        <ul class="lib-releases">
+          <li class="lib-release">
+            <span class="rel-dot pending"></span>
+            <div>
+              <p class="rel-name" data-en="Political tension underscore" data-de="Politik-Tension-Underscore">Political tension underscore</p>
+              <p class="rel-sub" data-en="First tracks in production" data-de="Erste Tracks in Produktion">First tracks in production</p>
+            </div>
+          </li>
+        </ul>
+        <div class="lib-foot">
+          <span class="lib-status" data-en="Signed" data-de="Signed">Signed</span>
+        </div>
+      </article>
+
+      <!-- GROOVE TOWER MUSIC -->
+      <article class="lib-card">
+        <div class="lib-logo">
+          <img src="logos/groove-tower.png" alt="Groove Tower Music"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="lib-wordmark" style="display:none">Groove Tower Music</span>
+        </div>
+        <p class="lib-meta" data-en="Sync · Media" data-de="Sync · Medien">Sync · Media</p>
+        <ul class="lib-releases">
+          <li class="lib-release">
+            <span class="rel-dot"></span>
+            <div>
+              <p class="rel-name" data-en="Two-track sync deal" data-de="Zwei-Track-Sync-Deal">Two-track sync deal</p>
+              <p class="rel-sub" data-en="Signed 2026" data-de="Signed 2026">Signed 2026</p>
+            </div>
+          </li>
+        </ul>
+        <div class="lib-foot">
+          <span class="lib-status live">Live</span>
+          <a class="lib-link" href="http://groovetowermusic.com" target="_blank" rel="noopener"
+             data-en="View library" data-de="Zur Library">View library</a>
+        </div>
+      </article>
+
+      <!-- STARDUST AUDIO -->
+      <article class="lib-card">
+        <div class="lib-logo">
+          <img src="logos/stardust.png" alt="Stardust Audio"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="lib-wordmark" style="display:none">Stardust Audio</span>
+        </div>
+        <p class="lib-meta" data-en="Production Music" data-de="Produktionsmusik">Production Music</p>
+        <ul class="lib-releases">
+          <li class="lib-release">
+            <span class="rel-dot"></span>
+            <div>
+              <p class="rel-name" data-en="Catalogue tracks" data-de="Katalog-Tracks">Catalogue tracks</p>
+            </div>
+          </li>
+        </ul>
+        <div class="lib-foot">
+          <span class="lib-status live">Live</span>
+          <a class="lib-link" href="https://stardust.audio" target="_blank" rel="noopener"
+             data-en="View library" data-de="Zur Library">View library</a>
+        </div>
+      </article>
+
+      <!-- RAREFORM -->
+      <article class="lib-card">
+        <div class="lib-logo">
+          <img src="logos/rareform.png" alt="Rareform Production Music"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <span class="lib-wordmark" style="display:none">Rareform</span>
+        </div>
+        <p class="lib-meta" data-en="Production Music · US" data-de="Produktionsmusik · USA">Production Music · US</p>
+        <ul class="lib-releases">
+          <li class="lib-release">
+            <span class="rel-dot"></span>
+            <div>
+              <p class="rel-name" data-en="Catalogue tracks" data-de="Katalog-Tracks">Catalogue tracks</p>
+            </div>
+          </li>
+        </ul>
+        <div class="lib-foot">
+          <span class="lib-status live">Live</span>
+          <a class="lib-link" href="https://www.rareformaudio.com" target="_blank" rel="noopener"
+             data-en="View library" data-de="Zur Library">View library</a>
+        </div>
+      </article>
+
+    </div>
   </div>
 </section>
 
@@ -1000,7 +1310,7 @@
     <div class="service-card">
       <div class="service-number">06</div>
       <p class="service-name" data-en="Sync Licensing" data-de="Sync Licensing">Sync Licensing</p>
-      <p class="service-desc" data-en="Production music available for direct sync licensing through RipCue Music, Stardust Audio, Rareform and 10West Music." data-de="Produktionsmusik zur direkten Sync-Lizenzierung über RipCue Music, Stardust Audio, Rareform und 10West Music.">Production music available for direct sync licensing through RipCue Music, Stardust Audio, Rareform and 10West Music.</p>
+      <p class="service-desc" data-en="Production music available for direct sync licensing through RipCue Music, MHC Entertainment, 10 West Music, Music Sculptor, Groove Tower, Stardust Audio and Rareform." data-de="Produktionsmusik zur direkten Sync-Lizenzierung über RipCue Music, MHC Entertainment, 10 West Music, Music Sculptor, Groove Tower, Stardust Audio und Rareform.">Production music available for direct sync licensing through RipCue Music, MHC Entertainment, 10 West Music, Music Sculptor, Groove Tower, Stardust Audio and Rareform.</p>
     </div>
   </div>
 </section>
@@ -1054,9 +1364,9 @@
     <a class="contact-email" href="mailto:tascomposing@gmail.com">tascomposing@gmail.com</a>
 
     <ul class="contact-socials">
-      <li><a href="https://www.instagram.com/timo_alexander_music/" target="_blank">Instagram</a></li>
-      <li><a href="https://linkedin.com/in/timo-stegmeier-32a28032b/" target="_blank">LinkedIn</a></li>
-      <li><a href="https://x.com/TigerBeats4" target="_blank">X / Twitter</a></li>
+      <li><a href="https://www.instagram.com/timo_alexander_music/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://linkedin.com/in/timo-stegmeier-32a28032b/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://x.com/TigerBeats4" target="_blank" rel="noopener">X / Twitter</a></li>
     </ul>
   </div>
 </section>
@@ -1090,80 +1400,48 @@
 <!-- FOOTER -->
 <footer>
   <p class="footer-logo">Timo Alexander Music</p>
-  <p>© 2025 Timo Stegmeier · Im Brühl 2, 74821 Mosbach · <a href="#impressum" style="color: var(--muted); text-decoration:none;">Impressum</a></p>
+  <p>© 2026 Timo Stegmeier · Im Brühl 2, 74821 Mosbach · <a href="#impressum" style="color: var(--muted); text-decoration:none;">Impressum</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Audio player
-  window.togglePlay = function() {
-    const audio = document.getElementById('zdfAudio');
-    const playIcon = document.getElementById('playIcon');
-    const pauseIcon = document.getElementById('pauseIcon');
-    if (audio.paused) {
-      audio.play().catch(e => console.log('Play error:', e));
-      playIcon.style.display = 'none';
-      pauseIcon.style.display = 'block';
-    } else {
-      audio.pause();
-      playIcon.style.display = 'block';
-      pauseIcon.style.display = 'none';
-    }
-  };
-
-  window.seekAudio = function(e) {
-    const audio = document.getElementById('zdfAudio');
-    const bar = document.getElementById('progressBar');
-    const rect = bar.getBoundingClientRect();
-    const ratio = (e.clientX - rect.left) / rect.width;
-    audio.currentTime = ratio * audio.duration;
-  };
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const audio = document.getElementById('zdfAudio');
-    const progressFill = document.getElementById('progressFill');
-    const playerTime = document.getElementById('playerTime');
-
-    audio.addEventListener('timeupdate', () => {
-      if (audio.duration) {
-        const pct = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.width = pct + '%';
-        const m = Math.floor(audio.currentTime / 60);
-        const s = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
-        playerTime.textContent = `${m}:${s}`;
-      }
-    });
-
-    audio.addEventListener('ended', () => {
-      document.getElementById('playIcon').style.display = 'block';
-      document.getElementById('pauseIcon').style.display = 'none';
-      progressFill.style.width = '0%';
-      playerTime.textContent = '0:00';
-    });
-
-    // Generate waveform background bars
+<script>
+  // Hero-Waveform aufbauen
+  document.addEventListener('DOMContentLoaded', function () {
     const waveform = document.getElementById('waveform');
-    const count = Math.floor(window.innerWidth / 6)
+    if (!waveform) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const count = Math.max(24, Math.floor(window.innerWidth / 12));
+
     for (let i = 0; i < count; i++) {
-      const bar = document.createElement('div');
-      bar.className = 'wave-bar';
-      bar.style.height = (Math.random() * 60 + 10) + '%';
-      bar.style.animationDelay = (Math.random() * 2) + 's';
+      const bar = document.createElement('span');
+      const h1 = Math.random() * 30 + 10;
+      const h2 = h1 + Math.random() * 70 + 20;
+      bar.style.setProperty('--h1', h1 + 'px');
+      bar.style.setProperty('--h2', h2 + 'px');
+      bar.style.setProperty('--dur', (1.4 + Math.random() * 1.6) + 's');
+      bar.style.setProperty('--delay', (Math.random() * 2) + 's');
+      if (reduced) {
+        bar.style.animation = 'none';
+        bar.style.height = h1 + 'px';
+      }
       waveform.appendChild(bar);
     }
-  </script>
+  });
+</script>
 
-  <script>
-    // Language switcher
-    let currentLang = 'en';
-    function toggleLang() {
-      currentLang = currentLang === 'en' ? 'de' : 'en';
-      const btn = document.getElementById('lang-btn');
-      btn.textContent = currentLang === 'en' ? 'DE' : 'EN';
-      document.querySelectorAll('[data-en]').forEach(el => {
-        const text = el.getAttribute('data-' + currentLang);
-        if (text) el.innerHTML = text;
-      });
-    }
-  </script>
+<script>
+  // Language switcher
+  let currentLang = 'en';
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'de' : 'en';
+    const btn = document.getElementById('lang-btn');
+    btn.textContent = currentLang === 'en' ? 'DE' : 'EN';
+    document.documentElement.lang = currentLang;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + currentLang);
+      if (text) el.innerHTML = text;
+    });
+  }
+</script>
 </body>
 </html>
