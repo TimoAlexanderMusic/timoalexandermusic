@@ -369,6 +369,24 @@
     line-height: 1.7;
   }
 
+  /* ── SHOWCASE (As heard on) ── */
+  .showcase { margin-top: 96px; }
+  .showcase-lead { font-size: 14px; color: var(--muted); max-width: 560px; margin: -28px 0 40px; line-height: 1.7; }
+  .showcase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .show-card { margin: 0; background: var(--bg2); position: relative; overflow: hidden; transition: background 0.3s; }
+  .show-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--orange); transform: scaleY(0); transform-origin: top; transition: transform 0.3s; z-index: 2; }
+  .show-card:hover { background: var(--bg3); }
+  .show-card:hover::before { transform: scaleY(1); }
+  .show-img { aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+  .show-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(35%) brightness(0.85); transition: filter 0.4s, transform 0.5s; }
+  .show-img.is-logo { background: #fff; }
+  .show-img.is-logo img { object-fit: contain; padding: 12px; filter: none; }
+  .show-card:hover .show-img img { filter: grayscale(0%) brightness(1); transform: scale(1.04); }
+  .show-card figcaption { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 6px; }
+  .show-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--cream); line-height: 1.15; }
+  .show-meta { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); }
+  .showcase-note { font-size: 10px; color: var(--muted); opacity: 0.7; margin-top: 18px; letter-spacing: 0.5px; }
+
   /* ── TRACKS ── */
   .tracks { background: var(--bg); }
 
@@ -977,6 +995,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#music" data-en="Music" data-de="Musik">Music</a></li>
+    <li><a href="#showcase" data-en="Showcase" data-de="Showcase">Showcase</a></li>
     <li><a href="#services" data-en="Services" data-de="Leistungen">Services</a></li>
     <li><a href="#about" data-en="About" data-de="Über mich">About</a></li>
     <li><a href="#contact" data-en="Contact" data-de="Kontakt">Contact</a></li>
@@ -1070,6 +1089,45 @@
   </div>
 
   <!-- ============================================================
+       SHOWCASE – "My music has been used here"
+       Neue Show hinzufügen: Bild nach /showcase/ legen und eine
+       <figure class="show-card"> kopieren.
+       ============================================================ -->
+  <div class="showcase" id="showcase">
+    <p class="section-label" data-en="As heard on" data-de="Bekannt aus">As heard on</p>
+    <h3 class="section-title" style="font-size: clamp(28px,3.2vw,42px);"
+        data-en="My music has been used here." data-de="Hier lief meine Musik.">My music has been used here.</h3>
+    <p class="showcase-lead"
+       data-en="TV formats in Germany and Italy that have featured my tracks."
+       data-de="TV-Formate in Deutschland und Italien, in denen meine Tracks gelaufen sind.">TV formats in Germany and Italy that have featured my tracks.</p>
+    <div class="showcase-grid">
+      <figure class="show-card">
+        <div class="show-img"><img src="showcase/the-taste.jpg" alt="The Taste" loading="lazy"></div>
+        <figcaption><span class="show-title">The Taste</span><span class="show-meta" data-en="SAT.1 · Cooking Show" data-de="SAT.1 · Kochshow">SAT.1 · Cooking Show</span></figcaption>
+      </figure>
+      <figure class="show-card">
+        <div class="show-img"><img src="showcase/sportstudio-live.jpg" alt="sportstudio live" loading="lazy"></div>
+        <figcaption><span class="show-title">sportstudio live</span><span class="show-meta" data-en="ZDF · Sport" data-de="ZDF · Sport">ZDF · Sport</span></figcaption>
+      </figure>
+      <figure class="show-card">
+        <div class="show-img is-logo"><img src="showcase/fruehstuecksfernsehen.jpg" alt="SAT.1 Frühstücksfernsehen" loading="lazy"></div>
+        <figcaption><span class="show-title">SAT.1 Frühstücksfernsehen</span><span class="show-meta" data-en="SAT.1 · Morning Show" data-de="SAT.1 · Morgenmagazin">SAT.1 · Morning Show</span></figcaption>
+      </figure>
+      <figure class="show-card">
+        <div class="show-img"><img src="showcase/lo-stato-delle-cose.jpg" alt="Lo Stato delle Cose" loading="lazy"></div>
+        <figcaption><span class="show-title">Lo Stato delle Cose</span><span class="show-meta" data-en="Rai 3 · Italy · Talk" data-de="Rai 3 · Italien · Talk">Rai 3 · Italy · Talk</span></figcaption>
+      </figure>
+      <figure class="show-card">
+        <div class="show-img is-logo"><img src="showcase/galileo.jpg" alt="Galileo" loading="lazy"></div>
+        <figcaption><span class="show-title">Galileo</span><span class="show-meta" data-en="ProSieben · Infotainment" data-de="ProSieben · Wissensmagazin">ProSieben · Infotainment</span></figcaption>
+      </figure>
+    </div>
+    <p class="showcase-note"
+       data-en="Show names and logos are trademarks of their respective broadcasters. Shown for reference only."
+       data-de="Sendungsnamen und Logos sind Marken der jeweiligen Sender. Nur zur Referenz.">Show names and logos are trademarks of their respective broadcasters. Shown for reference only.</p>
+  </div>
+
+  <!-- ============================================================
        LIBRARIES & KATALOGE
        Logos: Ordner /logos/ anlegen, Dateien exakt so benennen wie
        unten im src. Fehlt eine Datei, zeigt die Karte automatisch
@@ -1087,7 +1145,7 @@
         <i>·</i>
         <span><strong>4</strong><span data-en="Albums" data-de="Alben">Albums</span></span>
         <i>·</i>
-        <span><strong>1</strong><span data-en="TV Placement" data-de="TV-Placement">TV Placement</span></span>
+        <span><strong>5</strong><span data-en="TV Placements" data-de="TV-Placements">TV Placements</span></span>
       </p>
     </div>
 
